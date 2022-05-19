@@ -124,10 +124,6 @@
         <h2>Test realizados</h2>
 
         <div>
-            <img src="request_example.png" alt="examples">
-        </div>
-
-        <div>
             <h3>GET</h3>
             <p>http://fuelomejordelamor.loc/fuelomejordelamor/api/locations/</p>
             <p>Response:</p>
