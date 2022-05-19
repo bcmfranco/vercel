@@ -121,17 +121,8 @@
             <li>'message'=>['admin'],</li>
         </ul>
     </div>
-
-    <div id="tools">
-        <div class="btn" id="test_btn">
-            <a href="#wizzard_2">TEST</a>
-        </div>
-        <div class="btn" id="github_btn">
-            <a href="https://github.com/bcmfranco/starwars">GITHUB</a>
-        </div>
-    </div>
-
 </div>
+
 <div class="wizzard" id="wizzard_2">
 
     <div id="test_record">
@@ -247,9 +238,6 @@
     </div>
 
     <div id="tools">
-        <div class="btn" id="home_btn">
-            <a href="#wizzard_1">HOME</a>
-        </div>
         <div class="btn" id="github_btn">
             <a href="https://github.com/bcmfranco/starwars">GITHUB</a>
         </div>
