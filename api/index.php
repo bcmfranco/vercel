@@ -69,11 +69,6 @@
         color: red;
     }
 
-    #wizzard_2{
-        display: none;
-    }
-
-
 </style>
 <body>
 
