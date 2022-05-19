@@ -132,9 +132,131 @@
     </div>
 
 </div>
-<script>
+<div class="wizzard" id="">
 
-</script>
+    <div id="test_record">
+        <h2>Test realizados</h2>
+
+        <div>
+            <h3>GET</h3>
+            <p>http://fuelomejordelamor.loc/fuelomejordelamor/api/locations/</p>
+            <p>Response:</p>
+            <div class=response>
+                {
+                    "KENOBI": [
+                        -500,
+                        -200
+                    ],
+                    "SKYWALKER": [
+                        100,
+                        -100
+                    ],
+                    "SATO": [
+                        500,
+                        100
+                    ]
+                }
+            </div>
+        </div>
+
+        <div>
+            <h3>GET</h3>
+            <p>http://fuelomejordelamor.loc/fuelomejordelamor/api/location/</p>
+            <p>Response:</p>
+            <div class=response>
+                {
+                    "name": "KENOBI",
+                    "position": {
+                        "x": -500,
+                        "y": -500
+                    }
+                }
+            </div>
+        </div>
+
+        <div>
+            <h3>GET</h3>
+            <p>http://fuelomejordelamor.loc/fuelomejordelamor/api/location/</p>
+            <p>Response:</p>
+            <div class=response>
+                {
+                    "name": "KENOBI",
+                    "position": {
+                        "x": -500,
+                        "y": -500
+                    }
+                }
+
+            </div>
+        </div>
+
+        <div>
+            <h3>GET</h3>
+            <p>http://fuelomejordelamor.loc/fuelomejordelamor/api/location/</p>
+            <p>body -> form-encode:</p>
+            <p>name: xhshd</p>
+            <p>Response:</p>
+            <div class=response>
+            {
+                "code": 404,
+                "msj": "Satelite not founded"
+            }
+            </div>
+        </div>
+
+        <div>
+            <h3>POST</h3>
+            <p>http://fuelomejordelamor.loc/fuelomejordelamor/api/message/</p>
+            <p>body -> form-encode:</p>
+            <p>message: hola mundo</p>
+            <p>header:</p>
+            <p>key: admin</p>
+            <p>Response:</p>
+            <div class=response>
+                {
+                    "message": [
+                        "hola,mundo"
+                    ]
+                }
+
+            </div>
+        </div>
+
+        <div>
+            <h3>POST</h3>
+            <p>http://fuelomejordelamor.loc/fuelomejordelamor/api/message/</p>
+            <p>body -> form-encode:</p>
+            <p>message: hola mundo</p>
+            <p>Response:</p>
+            <div class=response>
+            stdClass Object
+                (
+                    [withStatus] => 401
+                    [withJson] => Array
+                    (
+                    [code] => 401
+                    [msj] => Unauthorized
+                    )
+
+                )
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <div id="tools">
+        <div class="btn" id="home_btn">
+            <a href="index.php">HOME</a>
+        </div>
+        <div class="btn" id="github_btn">
+            <a href="https://github.com/bcmfranco/starwars">GITHUB</a>
+        </div>
+    </div>
+
+
+</div>
 
 </body>
 </html>

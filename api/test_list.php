@@ -62,6 +62,10 @@
         cursor: pointer;
     }
 
+    .btn a{
+        text-decoration: none;
+    }
+
     #about .btn{
         color: red;
     }
