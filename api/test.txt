@@ -1,0 +1,110 @@
+GET 
+http://fuelomejordelamor.loc/fuelomejordelamor/api/locations/
+
+response: 
+{
+  "KENOBI": [
+    -500,
+    -200
+  ],
+  "SKYWALKER": [
+    100,
+    -100
+  ],
+  "SATO": [
+    500,
+    100
+  ]
+}
+
+test: ok
+
+---------
+
+GET 
+http://fuelomejordelamor.loc/fuelomejordelamor/api/location/
+body -> form-encode:
+name: kenobi
+
+response: 
+{
+  "name": "KENOBI",
+  "position": {
+    "x": -500,
+    "y": -500
+  }
+}
+
+test: ok
+
+---------
+
+GET 
+http://fuelomejordelamor.loc/fuelomejordelamor/api/location/
+body -> form-encode:
+name: KENOBI
+
+response: 
+{
+  "name": "KENOBI",
+  "position": {
+    "x": -500,
+    "y": -500
+  }
+}
+
+test: ok
+
+---------
+
+GET 
+http://fuelomejordelamor.loc/fuelomejordelamor/api/location/
+body -> form-encode:
+name: xhshd
+
+response: 
+{
+  "code": 404,
+  "msj": "Satelite not founded"
+}
+
+test: ok
+
+---------
+
+POST 
+http://fuelomejordelamor.loc/fuelomejordelamor/api/message/
+body -> form-encode:
+message: hola mundo
+header:
+key: admin
+
+response:
+{
+  "message": [
+    "hola,mundo"
+  ]
+}
+
+test: ok
+
+---------
+
+POST 
+http://fuelomejordelamor.loc/fuelomejordelamor/api/message/
+body -> form-encode:
+message: hola mundo
+
+response:
+stdClass Object
+(
+[withStatus] => 401
+[withJson] => Array
+(
+[code] => 401
+[msj] => Unauthorized
+)
+
+)
+
+test: ok

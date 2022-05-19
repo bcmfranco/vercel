@@ -1,0 +1,61 @@
+body{
+    font-family: system-ui;
+    width: 80%;
+    margin: 0 auto;
+}
+
+a{
+    color: inherit;
+    text-decoration: underline;
+}
+
+h1{
+    text-align: center;
+    font-size: 34px;
+}
+
+div{
+    margin: 30px 0px;
+    padding: 10px;/* border: 1px solid red; */
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+h2{
+    margin: 0;
+    font-size: 28px;
+    line-height: 34px;
+}
+
+p{
+    margin: 0;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+ul{
+    list-style: none;
+}
+
+#tools{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+}
+
+.btn{
+    color: inherit;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 50px;
+    cursor: pointer;
+}
+
+#about .btn{
+    color: red;
+}
+
+#wizzard_2{
+    display: none;
+}
