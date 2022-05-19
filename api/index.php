@@ -79,7 +79,7 @@
 
 <h1>STAR WARS API REST</h1>
 
-<div class="wizzard" id="">
+<div class="wizzard" id="wizzard_1">
 
     <div id="about">
         <h2>Entorno</h2>
@@ -124,7 +124,7 @@
 
     <div id="tools">
         <div class="btn" id="test_btn">
-            <a href="test_listp.php">TEST</a>
+            <a href="#wizzard_2">TEST</a>
         </div>
         <div class="btn" id="github_btn">
             <a href="https://github.com/bcmfranco/starwars">GITHUB</a>
@@ -132,7 +132,7 @@
     </div>
 
 </div>
-<div class="wizzard" id="">
+<div class="wizzard" id="wizzard_2">
 
     <div id="test_record">
         <h2>Test realizados</h2>
@@ -248,7 +248,7 @@
 
     <div id="tools">
         <div class="btn" id="home_btn">
-            <a href="index.php">HOME</a>
+            <a href="#wizzard_1">HOME</a>
         </div>
         <div class="btn" id="github_btn">
             <a href="https://github.com/bcmfranco/starwars">GITHUB</a>
