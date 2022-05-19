@@ -1,203 +1,49 @@
 <?php
-    include_once("head.php");
-?>
+use \Psr\Http\Message\ServerRequestInterface as Request;
+use \Psr\Http\Message\ResponseInterface as Response;
 
-<h1>STAR WARS API REST</h1>
+require('lib/vendor/autoload.php');
+require('../common.php');
+require('functions.php');
 
-<!----------------- WIZARD 1 ------------>
-<div class="wizzard" id="wizzard_1">
+// Create and configure Slim app
+$config = ['settings' => [
+    'addContentLengthHeader' => false,
+]];
+$app = new \Slim\App($config);
 
-    <div id="about">
-        <h2>Entorno</h2>
-        <p>Requiere PHP 4.7 y Slim 3</p>
-        <p>Es una API Rest construida en PHP 4.7 con el framework <a href="https://www.slimframework.com/docs/v3/">Slim</a></p>
-    </div>
+// Middelware
+$path = '/starwars/api/';
+if(isset($_SERVER['HTTP_KEY'])){ // Key enviada en Headers
+    $key = $_SERVER['HTTP_KEY'];
+} 
 
-    <div id="run">
-        <h2>Run</h2>
-        <p>En un cliente de api como Postmand o ThunerClient, correr:</p>
-        <p>Method: GET</p>
-        <p>URL: starwars/api/welcome/</p>
-    </div>
+$service_path = explode("/", explode($path, $_SERVER['REQUEST_URI'])[1])[0]; // Relative path del servico
+$service_auth = AUTH_LIST[$service_path]; // Perfil de autorización que requiere ese servicio
 
-    <div id="routing">
-        <h2>Rutas</h2>
-        <p>GET</p>
-        <p>/api/welcome/</p>
+if(!empty($service_auth)){ // Si tiene perfil de autorización
 
-        <p>GET</p>
-        <p>/api/locations/</p>
+    if(empty($key) || !in_array($key, $service_auth)) { // Si el perfil de autorización no contiene la key pasada
+        
+        $response = new stdClass();
 
-        <p>GET</p>
-        <p>/api/location/</p>
+        $response->withStatus = 401;
+        $response->withJson = [
+            'code' => 401,
+            'msj' => "Unauthorized"
+        ];
 
-        <p>POST</p>
-        <p>/api/message/</p>
-    </div>
+        print_r($response);exit;
 
-    <div id="extra">
-        <h2>Extra</h2>
-        <p>Cuenta con un Middleware que impide el request si la credencial
-        del usuario no coincide con el nivel de permiso del servicio.</p>
-        <p>Los perfiles requeridos según cada servicio son:</p>
-        <ul>
-            <li>'welcome'=>[],</li>
-            <li>'locations'=>[],</li>
-            <li>'location'=>['superuser'],</li>
-            <li>'message'=>['admin'],</li>
-        </ul>
-    </div>
+    } 
 
-    <div id="tools">
-        <div class="btn" id="test_btn">TEST</div>
-        <div class="btn" id="github_btn">GITHUB</div>
-    </div>
+}
+////////
 
-</div>
-<!----------------- /WIZARD 1 ------------>
+// Incluyo los recursos
+require "routes/services.php";
 
-<!----------------- WIZARD 2 ------------>
-<div class="wizzard" id="wizzard_2">
-
-    <div id="test_record">
-        <h2>Test realizados</h2>
-
-        <div>
-            <h3>GET</h3>
-            <p>http://fuelomejordelamor.loc/fuelomejordelamor/api/locations/</p>
-            <p>Response:</p>
-            <div class=response>
-                {
-                    "KENOBI": [
-                        -500,
-                        -200
-                    ],
-                    "SKYWALKER": [
-                        100,
-                        -100
-                    ],
-                    "SATO": [
-                        500,
-                        100
-                    ]
-                }
-            </div>
-        </div>
-
-        <div>
-            <h3>GET</h3>
-            <p>http://fuelomejordelamor.loc/fuelomejordelamor/api/location/</p>
-            <p>Response:</p>
-            <div class=response>
-                {
-                    "name": "KENOBI",
-                    "position": {
-                        "x": -500,
-                        "y": -500
-                    }
-                }
-            </div>
-        </div>
-
-        <div>
-            <h3>GET</h3>
-            <p>http://fuelomejordelamor.loc/fuelomejordelamor/api/location/</p>
-            <p>Response:</p>
-            <div class=response>
-                {
-                    "name": "KENOBI",
-                    "position": {
-                        "x": -500,
-                        "y": -500
-                    }
-                }
-
-            </div>
-        </div>
-
-        <div>
-            <h3>GET</h3>
-            <p>http://fuelomejordelamor.loc/fuelomejordelamor/api/location/</p>
-            <p>body -> form-encode:</p>
-            <p>name: xhshd</p>
-            <p>Response:</p>
-            <div class=response>
-            {
-                "code": 404,
-                "msj": "Satelite not founded"
-            }
-            </div>
-        </div>
-
-        <div>
-            <h3>POST</h3>
-            <p>http://fuelomejordelamor.loc/fuelomejordelamor/api/message/</p>
-            <p>body -> form-encode:</p>
-            <p>message: hola mundo</p>
-            <p>header:</p>
-            <p>key: admin</p>
-            <p>Response:</p>
-            <div class=response>
-                {
-                    "message": [
-                        "hola,mundo"
-                    ]
-                }
-
-            </div>
-        </div>
-
-        <div>
-            <h3>POST</h3>
-            <p>http://fuelomejordelamor.loc/fuelomejordelamor/api/message/</p>
-            <p>body -> form-encode:</p>
-            <p>message: hola mundo</p>
-            <p>Response:</p>
-            <div class=response>
-            stdClass Object
-                (
-                    [withStatus] => 401
-                    [withJson] => Array
-                    (
-                    [code] => 401
-                    [msj] => Unauthorized
-                    )
-
-                )
-
-            </div>
-        </div>
+// Run app
+$app->run();
 
 
-    </div>
-
-    <div id="tools">
-        <div class="btn" id="home">HOME</div>
-        <div class="btn" id="github_btn">GITHUB</div>
-    </div>
-
-</div>
-<!----------------- /WIZARD 2 ------------>
-
-<script>
-
-    $$('#test_btn').addEvent('click', function(){
-        $$('#wizzard_1').setStyle('display', 'none');
-        $$('#wizzard_2').setStyle('display', 'grid');
-    })
-
-    $$('#home').addEvent('click', function(){
-        $$('#wizzard_2').setStyle('display', 'none');
-        $$('#wizzard_1').setStyle('display', 'grid');
-    })
-
-    $$('#github_btn').addEvent('click', function(){
-        window.location.href = "https://github.com/bcmfranco/starwars";
-    })
-
-
-
-</script>
-
-</body>
-</html>
