@@ -79,8 +79,7 @@
 
 <h1>STAR WARS API REST</h1>
 
-<!----------------- WIZARD 1 ------------>
-<div class="wizzard" id="wizzard_1">
+<div class="wizzard" id="">
 
     <div id="about">
         <h2>Entorno</h2>
@@ -124,153 +123,16 @@
     </div>
 
     <div id="tools">
-        <div class="btn" id="test_btn">TEST</div>
-        <div class="btn" id="github_btn">GITHUB</div>
+        <div class="btn" id="test_btn">
+            <a href="test_listp.php">TEST</a>
+        </div>
+        <div class="btn" id="github_btn">
+            <a href="https://github.com/bcmfranco/starwars">GITHUB</a>
+        </div>
     </div>
 
 </div>
-<!----------------- /WIZARD 1 ------------>
-
-<!----------------- WIZARD 2 ------------>
-<div class="wizzard" id="wizzard_2">
-
-    <div id="test_record">
-        <h2>Test realizados</h2>
-
-        <div>
-            <h3>GET</h3>
-            <p>http://fuelomejordelamor.loc/fuelomejordelamor/api/locations/</p>
-            <p>Response:</p>
-            <div class=response>
-                {
-                    "KENOBI": [
-                        -500,
-                        -200
-                    ],
-                    "SKYWALKER": [
-                        100,
-                        -100
-                    ],
-                    "SATO": [
-                        500,
-                        100
-                    ]
-                }
-            </div>
-        </div>
-
-        <div>
-            <h3>GET</h3>
-            <p>http://fuelomejordelamor.loc/fuelomejordelamor/api/location/</p>
-            <p>Response:</p>
-            <div class=response>
-                {
-                    "name": "KENOBI",
-                    "position": {
-                        "x": -500,
-                        "y": -500
-                    }
-                }
-            </div>
-        </div>
-
-        <div>
-            <h3>GET</h3>
-            <p>http://fuelomejordelamor.loc/fuelomejordelamor/api/location/</p>
-            <p>Response:</p>
-            <div class=response>
-                {
-                    "name": "KENOBI",
-                    "position": {
-                        "x": -500,
-                        "y": -500
-                    }
-                }
-
-            </div>
-        </div>
-
-        <div>
-            <h3>GET</h3>
-            <p>http://fuelomejordelamor.loc/fuelomejordelamor/api/location/</p>
-            <p>body -> form-encode:</p>
-            <p>name: xhshd</p>
-            <p>Response:</p>
-            <div class=response>
-            {
-                "code": 404,
-                "msj": "Satelite not founded"
-            }
-            </div>
-        </div>
-
-        <div>
-            <h3>POST</h3>
-            <p>http://fuelomejordelamor.loc/fuelomejordelamor/api/message/</p>
-            <p>body -> form-encode:</p>
-            <p>message: hola mundo</p>
-            <p>header:</p>
-            <p>key: admin</p>
-            <p>Response:</p>
-            <div class=response>
-                {
-                    "message": [
-                        "hola,mundo"
-                    ]
-                }
-
-            </div>
-        </div>
-
-        <div>
-            <h3>POST</h3>
-            <p>http://fuelomejordelamor.loc/fuelomejordelamor/api/message/</p>
-            <p>body -> form-encode:</p>
-            <p>message: hola mundo</p>
-            <p>Response:</p>
-            <div class=response>
-            stdClass Object
-                (
-                    [withStatus] => 401
-                    [withJson] => Array
-                    (
-                    [code] => 401
-                    [msj] => Unauthorized
-                    )
-
-                )
-
-            </div>
-        </div>
-
-
-    </div>
-
-    <div id="tools">
-        <div class="btn" id="home">HOME</div>
-        <div class="btn" id="github_btn">GITHUB</div>
-    </div>
-
-</div>
-<!----------------- /WIZARD 2 ------------>
-
 <script>
-
-    $$('#test_btn').addEvent('click', function(){
-        $$('#wizzard_1').setStyle('display', 'none');
-        $$('#wizzard_2').setStyle('display', 'grid');
-    })
-
-    $$('#home').addEvent('click', function(){
-        $$('#wizzard_2').setStyle('display', 'none');
-        $$('#wizzard_1').setStyle('display', 'grid');
-    })
-
-    $$('#github_btn').addEvent('click', function(){
-        window.location.href = "https://github.com/bcmfranco/starwars";
-    })
-
-
 
 </script>
 
